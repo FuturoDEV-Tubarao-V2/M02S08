@@ -52,14 +52,14 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskDTO> createTask(@PathVariable("id") Long id,
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable("id") Long id,
                                               @RequestBody @Valid UpdateTaskForm form) throws TaskNotFoundException {
         TaskDTO response = this.taskService.updateTask(id, form);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<TaskDTO> createTask(@PathVariable("id") Long id) throws TaskNotFoundException {
+    public ResponseEntity<TaskDTO> deleteTask(@PathVariable("id") Long id) throws TaskNotFoundException {
         this.taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
     }
