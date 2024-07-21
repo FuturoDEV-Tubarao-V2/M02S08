@@ -31,7 +31,7 @@ public class TaskService {
     }
 
     public TaskDTO getSingleTask(Long id) throws TaskNotFoundException {
-        return this.taskRepository.findById(id)
+        return this.taskRepository.findByIdAndDeletedFalse(id)
                 .map(TaskDTO::new)
                 .orElseThrow(() -> new TaskNotFoundException(id));
     }
